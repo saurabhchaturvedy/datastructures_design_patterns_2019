@@ -14,9 +14,11 @@ public class BalancedParantheses {
 				charHolder.push(c);
 			} else {
 				if (c == ')' || c == '}' || c == ']') {
-					if (!charHolder.isEmpty() && isAMatchingPair(charHolder.peek().charValue(), c))
-						;
-					charHolder.pop();
+					if (charHolder.isEmpty() || !isAMatchingPair(charHolder.peek().charValue(), c)) {
+						return false;
+					} else {
+						charHolder.pop();
+					}
 				}
 			}
 		}
@@ -36,7 +38,7 @@ public class BalancedParantheses {
 	}
 
 	public static void main(String[] args) {
-		String expression = "[()()][";
+		String expression = "[{(a+b)*(c+d)}{]";
 		BalancedParantheses balancedParantheses = new BalancedParantheses();
 		boolean balancedParantheses2 = balancedParantheses.isBalancedParantheses(expression);
 		System.out.println("Given String has balanced paranthesis : " + balancedParantheses2);
