@@ -6,7 +6,7 @@ public class FindElementIn2DMatrix {
 		int row = 0;
 		int column = arr[0].length - 1;
 		boolean isFound = false;
-		while (isFound == false) {
+		while (!isFound) {
 			int key = arr[row][column];
 			if (key == num)
 				return true;
@@ -25,7 +25,7 @@ public class FindElementIn2DMatrix {
 	public static void main(String[] args) {
 		int[][] arr = { { 1, 2, 3, 4 }, { 6, 7, 8, 9 }, { 13, 14, 15, 16 }, { 17, 18, 19, 20 }, { 22, 23, 24, 26 } };
 		FindElementIn2DMatrix findElementIn2DMatrix = new FindElementIn2DMatrix();
-		boolean elementInMatrix = findElementIn2DMatrix.isElementInMatrix(arr, 83);
+		boolean elementInMatrix = findElementIn2DMatrix.isElementInMatrix(arr, 17);
 		System.out.println("is element present in the matrix ? " + elementInMatrix);
 	}
 }
