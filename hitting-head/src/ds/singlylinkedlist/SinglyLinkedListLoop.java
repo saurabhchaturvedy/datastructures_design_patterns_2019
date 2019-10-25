@@ -52,7 +52,7 @@ public class SinglyLinkedListLoop {
 		while (slowPointer != fastPointer) {
 			slowPointer = slowPointer.next;
 			length++;
-			
+
 		}
 		return length;
 		// TODO Auto-generated method stub
