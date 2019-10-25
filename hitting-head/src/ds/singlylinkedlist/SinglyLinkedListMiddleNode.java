@@ -19,8 +19,9 @@ public class SinglyLinkedListMiddleNode {
 		ListNode fastPointer = head;
 		ListNode slowPointer = head;
 		while (fastPointer != null && fastPointer.next != null) {
-			slowPointer = slowPointer.next;
+			
 			fastPointer = fastPointer.next.next;
+			slowPointer = slowPointer.next;
 		}
 		return slowPointer.data;
 
