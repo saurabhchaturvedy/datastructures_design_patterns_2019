@@ -75,6 +75,21 @@ public class SinglyLinkedListEndNode {
 		}
 	}
 
+	public void removeElementFromSortedList(int value) {
+		ListNode current = head;
+		ListNode behind = null;
+
+		while (current != null && current.data != value) {
+			behind = current;
+			current = current.next;
+		}
+
+		if (current == null)
+			return;
+		else
+			behind.next = current.next;
+	}
+
 	public static void main(String[] args) {
 		SinglyLinkedListEndNode linkedList = new SinglyLinkedListEndNode();
 		linkedList.head = new ListNode(10);
@@ -98,6 +113,8 @@ public class SinglyLinkedListEndNode {
 		System.out.println();
 		System.out.println("After inserting one element in the sorted list :");
 		System.out.println();
+		linkedList.display();
+		linkedList.removeElementFromSortedList(50);
 		linkedList.display();
 	}
 }
