@@ -47,11 +47,39 @@ public class SinglyLinkedListEndNode {
 
 	}
 
+	public void removeDuplicateFromSortedList() {
+		ListNode current = head;
+		while (current != null && current.next != null) {
+			if (current.data == current.next.data) {
+				current.next = current.next.next;
+			} else {
+				{
+					current = current.next;
+				}
+			}
+		}
+	}
+
+	public void insertElementInSortedList(int value) {
+		ListNode newNode = new ListNode(value);
+		ListNode current = head;
+		boolean isInserted = false;
+		while (current != null || !isInserted) {
+			if (current.data < value && (current.next == null || current.next.data > value)) {
+				newNode.next = current.next;
+				current.next = newNode;
+				isInserted = true;
+			} else {
+				current = current.next;
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		SinglyLinkedListEndNode linkedList = new SinglyLinkedListEndNode();
 		linkedList.head = new ListNode(10);
 		ListNode first = new ListNode(20);
-		ListNode second = new ListNode(30);
+		ListNode second = new ListNode(20);
 		ListNode third = new ListNode(40);
 		ListNode fourth = new ListNode(50);
 		ListNode fifth = new ListNode(60);
@@ -64,5 +92,12 @@ public class SinglyLinkedListEndNode {
 		linkedList.display();
 		int nodeFromEnd = linkedList.nodeFromEnd(2);
 		System.out.println("the node value is " + nodeFromEnd);
+		linkedList.removeDuplicateFromSortedList();
+		linkedList.display();
+		linkedList.insertElementInSortedList(300);
+		System.out.println();
+		System.out.println("After inserting one element in the sorted list :");
+		System.out.println();
+		linkedList.display();
 	}
 }
