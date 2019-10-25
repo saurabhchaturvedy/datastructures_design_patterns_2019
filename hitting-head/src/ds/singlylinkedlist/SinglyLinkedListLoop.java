@@ -15,18 +15,59 @@ public class SinglyLinkedListLoop {
 		}
 	}
 
-	public boolean hasAloop() {
+	public void hasAloop() {
 
 		ListNode fastPointer = head;
 		ListNode slowPointer = head;
 		while (fastPointer != null && fastPointer.next != null) {
 			fastPointer = fastPointer.next.next;
 			slowPointer = slowPointer.next;
-			if (fastPointer == slowPointer)
-				return true;
+			if (fastPointer == slowPointer) {
+				System.out.println("List has a loop , going to break it ...");
+				int findLoopLength = findLoopLength(fastPointer, slowPointer);
+				System.out.println("Loop length is " + findLoopLength);
+				breakLoop(fastPointer, slowPointer);
+			}
 		}
-		return false;
+		return;
 
+	}
+
+	private void breakLoop(ListNode fastPointer, ListNode slowPointer) {
+		// TODO Auto-generated method stub
+
+		slowPointer = slowPointer.next;
+		while (slowPointer.next != fastPointer) {
+			slowPointer = slowPointer.next;
+		}
+		slowPointer.next = null;
+		System.out.println("Loop has broken...");
+		display();
+
+	}
+
+	private int findLoopLength(ListNode fastPointer, ListNode slowPointer) {
+		slowPointer = slowPointer.next;
+		int length = 1;
+		while (slowPointer != fastPointer) {
+			slowPointer = slowPointer.next;
+			length++;
+			
+		}
+		return length;
+		// TODO Auto-generated method stub
+
+	}
+
+	private void display() {
+		// TODO Auto-generated method stub
+		ListNode current = head;
+		while (current != null) {
+			System.out.print(current.data + " -->");
+			current = current.next;
+
+		}
+		System.out.print("null");
 	}
 
 	public static void main(String[] args) {
@@ -42,10 +83,9 @@ public class SinglyLinkedListLoop {
 		first.next = second;
 		second.next = third;
 		third.next = fourth;
-		fourth.next = fifth;
-		
-		boolean hasAloop = linkedList.hasAloop();
-		System.out.println("This list has a loop ? " + (hasAloop ? "Yes" : "No"));
+		fourth.next = second;
+
+		linkedList.hasAloop();
 
 	}
 }
