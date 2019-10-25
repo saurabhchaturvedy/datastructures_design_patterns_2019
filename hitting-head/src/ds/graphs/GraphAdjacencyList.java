@@ -1,6 +1,7 @@
 package ds.graphs;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class GraphAdjacencyList {
 
@@ -39,12 +40,33 @@ public class GraphAdjacencyList {
 
 	}
 
+	public void bfs(int s) {
+		boolean[] visited = new boolean[V];
+		Queue<Integer> nodeQueue = new LinkedList<>();
+		visited[s] = true;
+		nodeQueue.offer(s);
+
+		while (!nodeQueue.isEmpty()) {
+			Integer u = nodeQueue.poll();
+			System.out.print(u + " ");
+			for (int x : adjList[u]) {
+				if (!visited[x]) {
+					visited[x] = true;
+					nodeQueue.offer(x);
+				}
+			}
+		}
+	}
+
 	public static void main(String[] args) {
-		GraphAdjacencyList graph = new GraphAdjacencyList(4);
+		GraphAdjacencyList graph = new GraphAdjacencyList(5);
 		graph.addEdge(0, 1);
 		graph.addEdge(1, 2);
 		graph.addEdge(2, 3);
 		graph.addEdge(3, 0);
+		graph.addEdge(2, 4);
 		System.out.println(graph);
+		System.out.println("BFS Traversal of the Graph is as :");
+		graph.bfs(0);
 	}
 }
