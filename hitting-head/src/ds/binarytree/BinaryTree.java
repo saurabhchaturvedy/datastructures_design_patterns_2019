@@ -1,5 +1,7 @@
 package ds.binarytree;
 
+import java.util.Stack;
+
 public class BinaryTree {
 
 	private TreeNode root;
@@ -36,9 +38,75 @@ public class BinaryTree {
 		preOrder(root.right);
 	}
 
+	public void inOrder(TreeNode root) {
+		if (root == null)
+			return;
+		inOrder(root.left);
+		System.out.println(root.data + " ");
+		inOrder(root.right);
+	}
+
+	public void postOrder(TreeNode root) {
+		if (root == null)
+			return;
+		postOrder(root.left);
+		postOrder(root.right);
+		System.out.println(root.data + " ");
+	}
+
+	public void postOrderIterative(TreeNode root) {
+		if (root == null)
+			return;
+		Stack<TreeNode> nodeStack = new Stack<>();
+		nodeStack.push(root);
+		while (!nodeStack.isEmpty()) {
+			TreeNode item = nodeStack.pop();
+			if (item.left != null) {
+				nodeStack.push(item.left);
+			}
+			if (item.right != null) {
+				nodeStack.push(item.right);
+			}
+			System.out.println(item.data + " ");
+		}
+	}
+
+	public void preOrderIterative() {
+		if (root == null)
+			return;
+		Stack<TreeNode> nodeStack = new Stack<>();
+		nodeStack.push(root);
+		while (!nodeStack.isEmpty()) {
+			TreeNode item = nodeStack.pop();
+			System.out.print(item.data + " ");
+			if (item.left != null)
+				nodeStack.push(item.left);
+			if (item.right != null)
+				nodeStack.push(item.right);
+		}
+	}
+
+	public void inOrderIterative(TreeNode root) {
+		if (root == null)
+			return;
+		Stack<TreeNode> nodeStack = new Stack<>();
+		TreeNode temp = root;
+		while (!nodeStack.isEmpty() || temp != null) {
+			if (temp != null) {
+				nodeStack.push(temp);
+				temp = temp.left;
+			} else {
+				temp = nodeStack.pop();
+				System.out.println(temp.data);
+				temp = temp.right;
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		BinaryTree binaryTree = new BinaryTree();
 		binaryTree.createBinaryTree();
-		preOrder(binaryTree.root);
+		binaryTree.preOrderIterative();
+		// binaryTree.preOrderIterative();
 	}
 }
