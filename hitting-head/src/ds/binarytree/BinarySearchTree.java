@@ -40,6 +40,18 @@ public class BinarySearchTree {
 		inOrder(root.right);
 	}
 
+	public TreeNode searchBST(TreeNode root, int key) {
+		if (root == null || root.data == key)
+			return root;
+
+		if (key < root.data) {
+			return searchBST(root.left, key);
+		} else {
+			return searchBST(root.right, key);
+		}
+
+	}
+
 	public static void main(String[] args) {
 		BinarySearchTree binarySearchTree = new BinarySearchTree();
 		binarySearchTree.insert(5);
@@ -48,5 +60,7 @@ public class BinarySearchTree {
 		binarySearchTree.insert(11);
 		binarySearchTree.insert(9);
 		binarySearchTree.inOrder(binarySearchTree.root);
+		TreeNode searchBST = binarySearchTree.searchBST(binarySearchTree.root, 11);
+		System.out.println("Node is " + (searchBST==null?"not found":"key found"));
 	}
 }
