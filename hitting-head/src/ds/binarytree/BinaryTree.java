@@ -1,5 +1,7 @@
 package ds.binarytree;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTree {
@@ -103,10 +105,27 @@ public class BinaryTree {
 		}
 	}
 
+	public void levelOrderTraversal(TreeNode root) {
+		if (root == null)
+			return;
+		Queue<TreeNode> nodeQueue = new LinkedList<>();
+		nodeQueue.offer(root);
+		while (!nodeQueue.isEmpty()) {
+			TreeNode item = nodeQueue.poll();
+			System.out.println(item.data + " ");
+			if (item.left != null) {
+				nodeQueue.offer(item.left);
+			}
+			if (item.right != null) {
+				nodeQueue.offer(item.right);
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		BinaryTree binaryTree = new BinaryTree();
 		binaryTree.createBinaryTree();
-		binaryTree.preOrderIterative();
+		binaryTree.levelOrderTraversal(binaryTree.root);
 		// binaryTree.preOrderIterative();
 	}
 }
