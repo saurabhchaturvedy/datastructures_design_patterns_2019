@@ -1,6 +1,6 @@
 package behavioral.mediator;
 
-public interface ScreenDirector {
+public interface ScreenMediator {
 
 	void setItemSelected(String item);
 }

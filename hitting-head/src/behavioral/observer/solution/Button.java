@@ -3,7 +3,7 @@ package behavioral.observer.solution;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Button implements Subject {
+public class Button implements Observable {
 
 	List<Observer> listOfObservers = new ArrayList<>();
 

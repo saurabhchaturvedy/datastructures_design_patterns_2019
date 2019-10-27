@@ -6,7 +6,7 @@ public class List {
 
 	private java.util.List<String> itemList = new ArrayList<>();
 
-	ScreenDirector screenDirector;
+	ScreenMediator screenDirector;
 
 	public void setItem(int itemNumber) {
 		String text = itemList.get(itemNumber);
@@ -17,7 +17,7 @@ public class List {
 		return itemList;
 	}
 
-	public void setScreenDirector(ScreenDirector screenDirector) {
+	public void setScreenDirector(ScreenMediator screenDirector) {
 		this.screenDirector = screenDirector;
 	}
 }

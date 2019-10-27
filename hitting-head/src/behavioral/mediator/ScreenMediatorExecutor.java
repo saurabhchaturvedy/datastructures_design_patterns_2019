@@ -6,7 +6,7 @@ public class ScreenMediatorExecutor {
 		List list = new List();
 		InputText inputText = new InputText();
 
-		ScreenDirectorOne screenDirectorOne = new ScreenDirectorOne();
+		InputTextMediator screenDirectorOne = new InputTextMediator();
 		screenDirectorOne.setInputText(inputText);
 
 		list.getAllItems().add("India");

@@ -1,9 +1,9 @@
 package behavioral.mediator;
 
-public class ScreenDirectorOne implements ScreenDirector {
+public class InputTextMediator implements ScreenMediator {
 
 	InputText inputText;
-	
+
 	public void setInputText(InputText inputText) {
 		this.inputText = inputText;
 	}

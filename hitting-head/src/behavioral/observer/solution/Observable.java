@@ -1,6 +1,6 @@
 package behavioral.observer.solution;
 
-public interface Subject {
+public interface Observable {
 
 	void attachObserver(Observer observer);
 
