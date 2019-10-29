@@ -28,10 +28,10 @@ public class NumberOfIslands {
 		if (i >= arr.length || i < 0 || j >= arr[0].length || j < 0 || trackingMatrix[i][j] || arr[i][j] == 0)
 			return;
 		trackingMatrix[i][j] = true;
-		explore(arr, i - 1, j);
-		explore(arr, i + 1, j);
-		explore(arr, i, j - 1);
-		explore(arr, i, j + 1);
+		explore(arr, i - 1, j); // top
+		explore(arr, i + 1, j); // bottom
+		explore(arr, i, j - 1); // towards left
+		explore(arr, i, j + 1); // towards right
 
 	}
 
