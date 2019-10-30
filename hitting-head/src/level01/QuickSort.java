@@ -35,10 +35,25 @@ public class QuickSort {
 			System.out.println(" " + arr[i]);
 	}
 
+	int findLargest(int[] arr, int length, int k) {
+		int start = 0;
+		int end = arr.length - 1;
+		int pIndex = partition(arr, start, end);
+		while (pIndex != length - k) {
+			if (pIndex < length - k)
+				return partition(arr, pIndex + 1, end);
+			else
+				return partition(arr, 0, pIndex - 1);
+		}
+		return pIndex;
+	}
+
 	public static void main(String[] args) {
 		int[] arr = { 7, 2, 1, 6, 8, 5, 3, 4 };
 		QuickSort quickSort = new QuickSort();
 		quickSort.quickSort(arr, 0, arr.length - 1);
+		int findLargest = quickSort.findLargest(arr, arr.length, 2);
+		System.out.println("largest is " + arr[findLargest]);
 		quickSort.printArray(arr);
 	}
 }
